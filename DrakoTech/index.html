@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>DrakoTech</title>
+</head>
+<body onload="obtenerInformacion()">
+
+  <div class="logo-container">
+    <img src="img/logo.webp" alt="Logo de Dragón">
+</div>
+
+
+    <h1>DrakoTech</h1>
+    <table width="100%" border="1" cellpadding="0" cellspacing="2" bordercolor="#000000">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Color</th>
+          <th>Almacenamiento</th>
+          <th>Procesador</th>
+        </tr>
+      </thead>
+      <tbody id="tblContenido">
+        <!-- Datos del JSON -->
+      </tbody>
+    </table>
+  
+    <h2>Consultar Teléfono</h2>
+    <input type="number" id="consultaId" placeholder="Ingrese ID del dispositivo">
+    <button onclick="consultarTelefono()">Consultar</button>
+    <p> Marca: <input placeholder="Marca" id="marca" type="text"></p>
+    <p> Modelo: <input placeholder="Modelo" id="modelo" type="text"></p>
+    <p> Color: <input placeholder="Color" id="color" type="text"></p>
+    <p> Almacenamiento: <input placeholder="Almacenamiento (GB)" id="almacenamiento" type="text"></p>
+    <p> Procesador: <input placeholder="Procesador" id="procesador" type="text"></p>
+    <button onclick="modificarTelefono()">Modificar</button>
+    <button onclick="eliminarTelefono()">Eliminar</button>
+  
+    <h2>Agregar Teléfono</h2>
+    <input type="text" id="marca_a" placeholder="Marca">
+    <input type="text" id="modelo_a" placeholder="Modelo">
+    <input type="text" id="color_a" placeholder="Color">
+    <input type="text" id="almacenamiento_a" placeholder="Almacenamiento (GB)">
+    <input type="text" id="procesador_a" placeholder="Procesador">
+    <button onclick="agregarTelefono()">Agregar</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
