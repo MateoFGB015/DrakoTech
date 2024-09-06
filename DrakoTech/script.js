@@ -42,9 +42,10 @@ function obtenerInformacion() {
 
 function consultarTelefono() {
     let idConsulta = document.getElementById('consultaId').value;
-    axios.get('https://my-json-server.typicode.com/fedegaray/telefonos/db')
-        .then(response => {
-            let dispositivos = response.data.dispositivos;
+    fetch('https://my-json-server.typicode.com/fedegaray/telefonos/db')
+        .then(respuesta => respuesta.json())
+        .then(data => {
+            let dispositivos = data.dispositivos;
             let dispositivoEncontrado = dispositivos.find(d => d.id == idConsulta);
 
             if (dispositivoEncontrado) {
@@ -89,10 +90,16 @@ function modificarTelefono() {
 function eliminarTelefono() {
     let idConsulta = document.getElementById('consultaId').value;
 
-    axios.delete(`https://my-json-server.typicode.com/fedegaray/telefonos/db/dispositivos/${idConsulta}`)
-    .then(response => {
-        alert(`Teléfono con ID ${idConsulta} ha sido eliminado.`);
-        obtenerInformacion(); 
+    fetch(`https://my-json-server.typicode.com/fedegaray/telefonos/db/dispositivos/${idConsulta}`, {
+        method: 'DELETE'
+    })
+    .then(respuesta => {
+        if (respuesta.ok) {
+            alert(`Teléfono con ID ${idConsulta} ha sido eliminado.`);
+            obtenerInformacion(); 
+        } else {
+            alert('Error al eliminar el teléfono.');
+        }
     })
     .catch(error => {
         console.error('Error al eliminar el teléfono:', error);
